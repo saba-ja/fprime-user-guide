@@ -1,0 +1,26 @@
+= Advanced Configuration
+
+There are several advanced options users can consider while installing F'. However, users should be warned that some knowledge of our tools and versions is often required.
+
+== Installing Optional Components
+
+Some F' packages contain optional components. These components can be installed including the option in square brackets.
+
+[cols="1,1"]
+|===
+|Package|Description
+|`fprime-tools[dev]`
+|Installs the Python development tools for working with F' Python code
+
+|`fprime-gds[uart-adapter]`
+|Installs the UART communication adapter for the F' GDS
+
+|`fprime-gds[test-api-xls]`
+|Installs excel logging for use within the integration test framework
+|===
+
+CAUTION: These packages are optional as they pull in many additional packages and libraries. These may not be supported on all systems.
+
+== Installing Tab Completion
+
+Several of F's command-line utilities support tab completion. To enable these tools to use it, see the xref:autocomplete.adoc[CLI Autocomplete^] instruction.

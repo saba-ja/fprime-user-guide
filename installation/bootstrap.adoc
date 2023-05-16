@@ -1,0 +1,13 @@
+= Bootstrapping the F' Development Environment
+
+To start using F Prime you need to install `fprime-tools` which is a Python package containing tools to work with F'. To install the fprime-tools run the following command.
+
+[source,console]
+----
+$ pip install fprime-tools
+----
+
+[TIP]
+Many operating systems provide Python PIP packages through their package managers (e.g., apt, yum). However, it is often advised to avoid installing these packages at the system level and instead use PIP to install them in a https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/[virtual environment,role=resource,window=_blank]. The rationale behind this recommendation is that the Python package version offered by the operating system may not be the required version needed by the Python project. As a result, we recommend users to install F' into a virtual environment.
+
+If you have recently started using F Prime, you can stop at this point. However, if you are seeking additional information regarding advanced CLI setup and toolchain installation, please proceed to the next section.

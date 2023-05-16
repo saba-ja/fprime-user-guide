@@ -1,0 +1,8 @@
+= NASA F Prime Framework
+
+== Introduction
+
+NASA F Prime is a software framework developed by NASA's Jet Propulsion Laboratory (JPL) that provides a reusable and flexible architecture for building space mission software systems. It is designed to facilitate the development of reliable and efficient flight software for space missions by providing a set of tools, libraries, and guidelines. F Prime provides a structured and modular approach to building software, allowing for easier development, testing, and maintenance of complex space systems. 
+
+The goal of this user guide is to simplify the learning process and empower developers to effectively utilize the F Prime framework in their mission software development tasks. To achieve this, the user guide will document the framework's features, components, and best practices, provide step-by-step instructions, and offer examples and tutorials that assist users in navigating and understanding the framework's functionalities.
+

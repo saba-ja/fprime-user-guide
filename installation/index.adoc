@@ -1,0 +1,9 @@
+= Development Environment Setup
+
+== Overview
+This installation guide has been specifically designed to help individuals and researchers quickly set up and start using F'. Larger projects with specific requirements may need to extend this process.
+
+include::requirements.adoc[leveloffset=1]
+include::bootstrap.adoc[leveloffset=1]
+include::advanced-config.adoc[leveloffset=1]
+include::troubleshooting.adoc[leveloffset=1]
