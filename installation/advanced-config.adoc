@@ -2,9 +2,11 @@
 
 There are several advanced options users can consider while installing F'. However, users should be warned that some knowledge of our tools and versions is often required.
 
+If you have recently started using F Prime, you can stop at this point. However, if you are seeking additional information regarding advanced CLI setup, please proceed to the next section.
+
 == Installing Optional Components
 
-Some F' packages contain optional components. These components can be installed including the option in square brackets.
+Some F' packages contain optional components. These components can be installed by including the option in square brackets shown below:
 
 [cols="1,1"]
 |===
@@ -20,7 +22,3 @@ Some F' packages contain optional components. These components can be installed 
 |===
 
 CAUTION: These packages are optional as they pull in many additional packages and libraries. These may not be supported on all systems.
-
-== Installing Tab Completion
-
-Several of F's command-line utilities support tab completion. To enable these tools to use it, see the xref:autocomplete.adoc[CLI Autocomplete^] instruction.

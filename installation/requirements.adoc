@@ -5,6 +5,6 @@ Before proceeding with the installation of F', there are several requirements th
 [horizontal]
 Operating System:: Use Linux or MacOS
 Version Control:: Git
-Build Tools:: https://cmake.org/download/[CMake] 3.16 or newer
+Build Tools:: https://cmake.org/download/[CMake,window=_blank] 3.16 or newer
 Compiler:: C/CPP compiler CLang or GNU C and CPP compilers (e.g., gcc and g++)
-Python:: https://www.python.org/downloads/[Python] 3.7 or newer
+Python:: https://www.python.org/downloads/[Python,window=_blank] 3.7 or newer

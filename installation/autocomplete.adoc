@@ -83,8 +83,4 @@ Autocomplete is currently available with the `fprime-cli` tool. Currently, you c
 
 == Further Information
 
-F' has its CLI tools written in Python, and we've implemented tab completion through the https://github.com/kislyuk/argcomplete[argcomplete] library. If you have any troubleshooting concerns, want to extend these tools, or need to explore more advanced settings, this documentation would be the starting point for troubleshooting.
-
-== Conclusion
-
-This guide walked the user through several options to install command line autocompletion where it is supported. The user is completely capable of running without this support but it may prove helpful to some users.
+F' has its CLI tools written in Python, and we've implemented tab completion through the https://github.com/kislyuk/argcomplete[argcomplete,window=_blank] library. If you have any troubleshooting concerns, want to extend these tools, or need to explore more advanced settings, this documentation would be the starting point for troubleshooting.

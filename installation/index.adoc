@@ -9,4 +9,6 @@ include::bootstrap.adoc[leveloffset=1]
 
 include::advanced-config.adoc[leveloffset=1]
 
+include::autocomplete.adoc[leveloffset=1]
+
 include::troubleshooting.adoc[leveloffset=1]

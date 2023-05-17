@@ -1,0 +1,84 @@
+= Getting Started: Creating an F' Project
+
+This tutorial will walk new users through creating a new F' project.
+
+include::../../installation/bootstrap.adoc[leveloffset=1]
+
+== Creating a New F' Project
+
+Now that to tools are installed a new F' project can be created. An F' project internalizes the version of F' that the project will build upon and provides the user the basic setup for creating, building, and testing components.
+
+In order to make a new project, run the following command and answer the questions as indicated below:
+
+[source,bash]
+----
+$ fprime-util new --project
+----
+
+This command will ask for some input. Respond with the following answers:
+
+----
+project_name [MyProject]: MyProject
+fprime_branch_or_tag [devel]: master
+Select install_venv:
+1 - yes
+2 - no
+Choose from 1, 2 [1]: 1
+venv_install_path [./venv]: ../venv
+----
+
+Use the default for anything not specified. This command will take a moment to run.  The above command creates a new F' project structure in a folder called `MyProject`, use the `master` branch of F' as the basis for the project, and set up the matching tools in a new Virtual Environment.
+
+NOTE: We have not yet created a deployment, but rather just the base project structure.
+
+If you successfully created a new project the structure of the generated files will look like the following
+----
+(venv) $ tree -L 2
+.
+├── MyProject
+│   ├── CMakeLists.txt
+│   ├── fprime
+│   ├── project.cmake
+│   ├── README.md
+│   └── settings.ini
+└── venv
+    ├── bin
+    ├── include
+    ├── lib
+    ├── lib64 -> lib
+    ├── pyvenv.cfg
+    └── share
+----
+
+The fprime repository has been added as a sub-repository to the newly created MyProject. However, there are currently no other folders inside MyProject. Once we add our components and deployment, project folders will be created accordingly. Additionally, a build folder and artifact folders will be added under MyProject, but they are ignored by Git to prevent committing automatically generated code to version control. The Python virtual environment has been placed outside of MyProject.
+
+== Building the New F' Project
+
+The next step is to set up and build the newly created project. This will serve as a build environment for any newly created components, and will build the F' framework supplied components.
+
+[source,bash]
+----
+cd MyProject
+fprime-util generate
+fprime-util build -j4
+----
+
+The fprime-util generate command generates build files for the F' framework based on the provided configuration files and templates. The generated output will be used to compile the rest of the software.
+
+fprime-util build -j4: This command initiates the build process for the F' software system. The build command compiles the generated files in the previous step to create the executable or deployable artifacts. The -j4 option specifies the number of parallel jobs to be used during the build process, where 4 in this case means that the build can utilize up to four concurrent processes or threads for faster compilation.
+
+The structure of `MyProject` folder should look like the following. As you can see a build folder has been added to the project.
+----
+(venv) $ tree -L 1
+.
+├── build-fprime-automatic-native
+├── CMakeLists.txt
+├── fprime
+├── project.cmake
+├── README.md
+└── settings.ini
+----
+
+== Conclusion
+
+A new project has been created with the name `MyProject` and has been placed in a new folder called in `MyProject` in the current directory. It includes the initial build system setup, and F' version. It is still empty in that the user will still need to create components and deployments. In the next tutorial we will learn how we can add components and deployments to our project. 

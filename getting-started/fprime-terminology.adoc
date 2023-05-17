@@ -1,0 +1,54 @@
+= Introduction and F' Terminology
+
+== F' Terminology
+
+To better understand how F Prime works, it is important to learn about the specific terminology used to describe various parts of the F Prime framework. This section dives into the basic F' terminology  that could help you better understand the language used in the tutorials of this user guide.
+
+
+=== Project
+
+An F' project is a collection of files and folders used to work with F'. At its core, a project is just a folder that can be used to hold F' code. 
+
+In the example below `MyProject` is the project name and contains various files and folders including the fprime library folder.
+
+----
+.
+├── MyProject
+    ├── CMakeLists.txt
+    ├── fprime
+    ├── project.cmake
+    ├── README.md
+    └── settings.ini
+----
+
+
+NOTE: Projects should specifically exclude the core F' library from being included in their version control system to avoid the "clone and own" problem. Rather projects should link-to a version of F' or include it as `git submodule` in their project.
+
+
+=== Deployment
+
+Deployments are a single build of F' software. Each deployment results in one software executable that can be run along with other associated files. Each deployment has a topology that defines the system.
+
+=== Topology
+
+Topologies are networks of connected components that define the software. Multiple instances of a component may be added to the topology.
+
+=== Component
+
+An F' component encapsulates a unit of system behavior. Components use ports to communicate with other components and define commands, events, telemetry channels, and parameters.
+
+=== Port
+
+A port is an interface used to communicate between components.
+
+=== Command
+
+Commands represent actions that a component can execute. Commands can be sent from the ground or via command sequences. Command behavior is defined in a command handler defined in the component's implementation. 
+
+=== Event
+
+Events represent actions performed by a component, and are received and displayed by the ground system. You can think of Events as software log messages.
+
+=== Telemetry Channel
+
+Telemetry channels provide the current state of the component, with each channel representing a specific item of state that will be transmitted to the ground system.
