@@ -29,13 +29,58 @@ NOTE: Projects should specifically exclude the core F' library from being includ
 
 Deployments are a single build of F' software. Each deployment results in one software executable that can be run along with other associated files. Each deployment has a topology that defines the system.
 
+In the example below `MyDeployment` is the project deployment name and contains various files and folders including the `Top` folder which contains the deployment topology files.
+----
+.
+└── MyProject
+    ├── CMakeLists.txt
+    ├── MyDeployment
+    │   ├── CMakeLists.txt
+    │   ├── Main.cpp
+    │   ├── README.md
+    │   ├── settings.ini
+    │   └── Top
+    │       ├── CMakeLists.txt
+    │       ├── instances.fpp
+    │       ├── MyDeploymentPackets.xml
+    │       ├── MyDeploymentTopology.cpp
+    │       ├── MyDeploymentTopologyDefs.hpp
+    │       ├── MyDeploymentTopology.hpp
+    │       └── topology.fpp
+    ├── project.cmake
+    ├── README.md
+    └── settings.ini
+----
+
 === Topology
 
 Topologies are networks of connected components that define the software. Multiple instances of a component may be added to the topology.
 
+In the example file list above the topology is defined in `MyProject/MyDeployment/Top/topology.fpp`
+
 === Component
 
 An F' component encapsulates a unit of system behavior. Components use ports to communicate with other components and define commands, events, telemetry channels, and parameters.
+
+In the example below `MyComponent` is the user defined component and contains various files and folders including the cpp source and header file where the component logic is implemented and the component FPP file were the component ports, events, telemetry, and parameters defined.
+
+----
+.
+└── MyProject
+    ├── CMakeLists.txt
+    ├── MyComponents
+    │   └── MyComponent
+    │       ├── CMakeLists.txt
+    │       ├── docs
+    │       │   └── sdd.md
+    │       ├── MyComponent.cpp
+    │       ├── MyComponent.fpp
+    │       └── MyComponent.hpp
+    ├── MyDeployment
+    ├── project.cmake
+    ├── README.md
+    └── settings.ini
+----
 
 === Port
 
@@ -49,6 +94,32 @@ Commands represent actions that a component can execute. Commands can be sent fr
 
 Events represent actions performed by a component, and are received and displayed by the ground system. You can think of Events as software log messages.
 
+In the example below the provided code defines an event called "Hello" that expects a greeting string as a parameter. The event has a high severity level and will generate a log message in the format "I say: {greeting}" when triggered. The following code will be placed in MyComponent.fpp file in the example above.
+
+[source,fpp]
+----
+@ Greeting event with maximum greeting length of 20 characters
+event Hello(
+    greeting: string size 20 @ Greeting supplied from the SAY_HELLO command
+) severity activity high format "I say: {}"
+----
+
 === Telemetry Channel
 
 Telemetry channels provide the current state of the component, with each channel representing a specific item of state that will be transmitted to the ground system.
+
+In the example below the provided code defines telemetry GreetingCount: U32: This line declares a telemetry channel named "GreetingCount" of type "U32." The "U32" type represents an unsigned 32-bit integer, which means it can hold positive whole numbers from 0 to 2^32 - 1. The following code will also be placed in MyComponent.fpp file in the example above.
+
+[source,fpp]
+----
+@ A count of the number of greetings issued
+telemetry GreetingCount: U32
+----
+
+=== FPP
+
+FPP is a domain-specific language (DSL) specifically designed for F Prime. It is used to define the behavior, communication, and configuration of components within an F Prime system. FPP provides a structured syntax for defining components, ports, events, commands, telemetry, and other system elements.
+
+FPP is designed to be readable, concise, and expressive, allowing engineers to define and configure system behavior using a high-level language. It provides abstractions and constructs to model the interactions between components and facilitates the development of complex embedded systems by providing a clear separation of concerns and well-defined interfaces between components.
+
+Overall, FPP is a key component of the F Prime software framework and plays a crucial role in defining the behavior and functionality of systems developed using F Prime.
