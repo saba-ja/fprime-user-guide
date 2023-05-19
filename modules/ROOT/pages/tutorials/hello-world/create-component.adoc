@@ -199,4 +199,3 @@ proceeding to the next section.
 This tutorial has walked through the creation of component that implements a "Hello World" style greeting behavior for
 our F' system. In the next tutorial, this component will be hooked-up to an F' deployment and tested!
 
-*Next:* xref:./Deployments.adoc[Getting Started: Integration and Testing With F' Deployments]
