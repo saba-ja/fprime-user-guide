@@ -1,7 +1,0 @@
-= Document
-:docinfo: shared
-
-[.mytoc]
-== Table of Contents
-
-* link:installation/index.html[Install F Prime]

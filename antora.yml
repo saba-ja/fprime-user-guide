@@ -1,0 +1,11 @@
+name: fprime-user-guide
+title: F Prime User Guide
+version: 1.0.0
+start_page: intro.adoc
+asciidoc:
+  attributes:
+    source-language: asciidoc@
+    table-caption: false
+nav:
+- modules/ROOT/nav.adoc
+
