@@ -94,7 +94,8 @@ Commands represent actions that a component can execute. Commands can be sent fr
 
 Events represent actions performed by a component, and are received and displayed by the ground system. You can think of Events as software log messages.
 
-In the example below the provided code defines an event called "Hello" that expects a greeting string as a parameter. The event has a high severity level and will generate a log message in the format "I say: {greeting}" when triggered. The following code will be placed in MyComponent.fpp file in the example above.
+In the example below the provided code defines an event called "Hello" that expects a greeting string as a parameter. The event has a high severity level and will generate a log message in the format "I say:
+\{greeting\}" when triggered. The following code will be placed in MyComponent.fpp file in the example above.
 
 [source,fpp]
 ----
