@@ -109,7 +109,6 @@ Specifying parameters in FPP is analogous to defining parameters for a function 
 
 In the example below, the FPP script defines an active component called SetTempComp. This component includes an asynchronous command named SET_TEMP, which is used to set a temperature value. The command accepts a parameter called temperature of type I32, allowing the user to specify the desired temperature within the range of a signed 32-bit integer.
 
-Example:
 [source,fpp]
 ----
 active component SetTempComp {
@@ -121,7 +120,7 @@ active component SetTempComp {
 
 In the example below, the FPP script defines an active component named HelloWorld that includes an asynchronous command called SAY_HELLO. The command accepts a parameter named greeting, which is a string of maximum 20 characters. This parameter enables the user to provide a greeting message when executing the SAY_HELLO command.
 
-Example:
+[source,fpp]
 ----
 active component HelloWorld {
 
@@ -132,7 +131,7 @@ active component HelloWorld {
 
 You can also pass parameters with limited options. For example let's say we wanted a command that would allow the user to set state of a hardware to ON or OFF and user should not have any other option. In the example below the FPP  script defines an enumeration State with two values, OFF and ON. It also defines an active component named Switch with an asynchronous command SET_STATE, which accepts a parameter named state of type State. This component and command can be used to manipulate or control the state of a switch-like entity.
 
-Example:
+[source,fpp]
 ----
 enum State {
   OFF
@@ -164,6 +163,7 @@ In the following example FPP script defines a component called CommandOpcodes. I
 * COMMAND_2 is an asynchronous command with two parameters, 'a' of type F32 and 'b' of type U32. It has an explicit opcode of 0x10.
 * COMMAND_3 is a synchronous command with a default opcode of 0x11.
 
+[source,fpp]
 ----
 active component CommandOpcodes {
 
@@ -183,6 +183,7 @@ In the example below The FPP script defines a component called DuplicateOpcode. 
 * COMMAND_1 is an asynchronous command with an opcode of 0x0.
 * COMMAND_2 is also an asynchronous command, but it mistakenly has the same opcode (0x0) as COMMAND_1.
 
+[source,fpp]
 ----
 active component DuplicateOpcode {
 
@@ -192,7 +193,6 @@ active component DuplicateOpcode {
 
 }
 ----
-
 
 == Command Dispatching
 
