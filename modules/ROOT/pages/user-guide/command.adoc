@@ -18,9 +18,9 @@ The properties defining commands are shown below:
 
 5. `opcode`: a numerical value uniquely representing the command. This opcode is automatically adjusted to be relative to a component's base id, and thus will not collide with other commands defined by other components.
 
-6. `priority`: For async commands, you may specify a priority. The priority specification is not allowed for other kinds of ports. The priorities regulate the order in which elements are dispatched from the message queue.
+6. `priority`: For async commands, you may specify a priority. The priority specification is not allowed for other kinds of ports. The priorities regulate the order in which elements are dispatched from the message queue. Commands with higher number have higher priority.
 
-7. Queue Full Behavior: For async commands, you may specify a what should the system do when the message queue is full. There are three possible behaviors:
+7. Queue Full Behavior: For async commands, you may specify what should the system do when the message queue is full. There are three possible behaviors:
 ** assert: Fail a FSW assertion (the default behavior).
 ** block: Block the sender until the queue is available.
 ** drop: Drop the incoming message and proceed.
@@ -215,6 +215,56 @@ active component DuplicateOpcode {
 
 }
 ----
+
+== Command Priority
+
+When specifying an async command, you may specify a priority for the command execution. Command priority in a message queue refers to the relative importance or urgency assigned to different commands in the queue. It determines the order in which commands are processed, with higher priority commands being executed before lower priority ones. You can put the priority number after the command name and after the parameters and opcode, if any. 
+
+Here is an example:
+
+[source,fpp]
+----
+active component MyPriorityComp {
+
+  async command COMMAND_1 priority 10
+
+  async command COMMAND_2(a: U32, b: F32) priority 20
+
+  async command COMMAND_3(a: string) opcode 0x10 priority 30
+
+}
+----
+
+In the example above the FPP script defines an active component called MyPriorityComp. It includes the declaration of three asynchronous commands. The first command, named COMMAND_1, is declared with a priority of 10. The second command, named COMMAND_2, has formal parameters 'a' of type U32 and 'b' of type F32. It is assigned a priority of 20. Lastly, the script declares an asynchronous command named COMMAND_3. It has a formal parameter 'a' of type string, an opcode of 0x10, and a priority of 30.
+
+[WARNING]: Command priority is only supported for async commands.
+
+== Command Queue Full Behavior
+
+As we specified above async commands are placed in a message queue first then they will be dispatched to the their destination component when the component is ready to handle the command. Now the question is what should happen when the message queue is full. By default, when an async command invocation leads to a message queue overflow, it triggers a assertion failure. The developer can capture the failure assertion and decide what to do next. The usual behavior is to abort the Flight Software and perform a system reset.
+You may change the Queue Full behavior in FPP by specifying what should the system do when the message queue is full. 
+
+There are three possible behaviors for message queue full:
+** assert: Fail a FSW assertion (the default behavior).
+** block: Block the sender until the queue is available.
+** drop: Drop the incoming message and proceed.
+
+Here is an example:
+
+[source,fpp]
+----
+active component MyQueueFullComp {
+
+  async command COMMAND_1
+
+  async command COMMAND_2(a: U32, b: F32) block
+
+  async command COMMAND_3(a: string) opcode 0x10 priority 30 drop
+
+}
+----
+
+The provided script defines an active component called "MyQueueFullComp" with three async commands: COMMAND_1, COMMAND_2, and COMMAND_3. COMMAND_1 has a default Queue Full behavior which means it will fail a software assertion when the queue is full. COMMAND_2 is set to block the sender until the message queue is available, while COMMAND_3 is configured to drop incoming messages when the queue is full.
 
 == Command Dispatching
 
