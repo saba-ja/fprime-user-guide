@@ -8,7 +8,7 @@ Each **Component** defines a set of commands for operations. Unlike pipes, which
 
 The properties defining commands are shown below:
 
-1. `kind`: (sync, async, guarded) controls which execution context the command runs in. Sync and guarded commands run on the execution context of the command dispatcher which is in charge of sending commands to components that have functions to handle the commands. Async commands execute on the component threads that is going to handle the command.
+1. `kind`: (async, sync, guarded) controls which execution context the command runs in. Sync and guarded commands run on the execution context of the command dispatcher which is in charge of sending commands to components that have functions to handle the commands. Async commands execute on the component threads that is going to handle the command.
 
 2. Keyword `command`: is a reserved word in FPP and indicates the script is a for `command` definition.
 
@@ -17,6 +17,28 @@ The properties defining commands are shown below:
 4. `arguments`: a set of primitive and F' data types supplied to the command handler to adjust its execution. These arguments are sent from the ground.
 
 5. `opcode`: a numerical value uniquely representing the command. This opcode is automatically adjusted to be relative to a component's base id, and thus will not collide with other commands defined by other components.
+
+6. `priority`: For async commands, you may specify a priority. The priority specification is not allowed for other kinds of ports. The priorities regulate the order in which elements are dispatched from the message queue.
+
+7. Queue Full Behavior: For async commands, you may specify a what should the system do when the message queue is full. There are three possible behaviors:
+** assert: Fail a FSW assertion (the default behavior).
+** block: Block the sender until the queue is available.
+** drop: Drop the incoming message and proceed.
+
+General format of FPP command definition
+
+[source,fpp]
+----
+<async, sync, guarded> command <COMMAND_NAME> [(args, ...)] [opcode NUMBER] [priority NUMBER] [assert, block, drop]
+----
+
+Example of FPP command definition
+Command with parameter a of type string. It has opcode 0x10 and priority 30 and queue full behavior of drop on queue full.
+
+[source,fpp]
+----
+async command COMMAND_3(a: string) opcode 0x10 priority 30 drop
+----
 
 == Kinds of Command 
 
