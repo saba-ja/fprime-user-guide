@@ -237,7 +237,7 @@ active component MyPriorityComp {
 
 In the example above the FPP script defines an active component called MyPriorityComp. It includes the declaration of three asynchronous commands. The first command, named COMMAND_1, is declared with a priority of 10. The second command, named COMMAND_2, has formal parameters 'a' of type U32 and 'b' of type F32. It is assigned a priority of 20. Lastly, the script declares an asynchronous command named COMMAND_3. It has a formal parameter 'a' of type string, an opcode of 0x10, and a priority of 30.
 
-[WARNING]: Command priority is only supported for async commands.
+[NOTE]: Command priority is only supported for async commands.
 
 == Command Queue Full Behavior
 
@@ -268,9 +268,9 @@ The provided script defines an active component called "MyQueueFullComp" with th
 
 == Command Dispatching
 
-When commands are defined for a component, the autocoder automatically adds ports for registering and receiving commands, and reporting an execution status when finished. Each component that handles commands should be hooked up to the command dispatcher connecting the registration, dispatch, and response ports in parallel.
+When commands are defined for a component, the autocoder automatically includes ports for registering and receiving commands, as well as reporting the execution status once finished. For each component that handles commands, it should be connected to the command dispatcher. This connection involves linking the registration, dispatch, and response ports in parallel.
 
-![Command Dispatcher](../media/data_model1.png)
+image::cmd_dispatcher_diagram.drawio.png[Command dispatcher model]
 
 **Figure 4. Command dispatcher.** The command dispatcher receives the raw buffer containing the command and arguments.
 The command opcode is extracted, and a lookup table is used to find the handling component. The argument buffer is then
