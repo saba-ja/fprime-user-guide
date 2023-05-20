@@ -1,18 +1,64 @@
 = Commands
 
-== Command overview
+== Command Overview
 
 Each **Component** defines a set of commands for operations. Unlike pipes, which are intended for component to component communication, commands are designed for user interaction with a component. Commands are defined through a series of properties. Users can send commands to the F' system and via `Svc::CmdDispatcher` these commands are dispatched to a handling component to invoke some behavior. The handling component handles a command by defining a command handler function to run when the command arrives.
 
+== Command Properties
+
 The properties defining commands are shown below:
 
-1. opcode: a numerical value uniquely representing the command. This opcode is automatically adjusted to be relative to a component's base id, and thus will not collide with other commands defined by other components.
+1. `kind`: (sync, async, guarded) controls which execution context the command runs in. Sync and guarded commands run on the execution context of the command dispatcher which is in charge of sending commands to components that have functions to handle the commands. Async commands execute on the component threads that is going to handle the command.
 
-2. mnemonic: a text value uniquely representing the command. The component instance name is prepended to the mnemonic to ensure uniqueness in the system.
+2. Keyword `command`: is a reserved word in FPP and indicates the script is a for `command` definition.
 
-3. arguments: a set of primitive and F' data types supplied to the command handler to adjust its execution. These arguments are sent from the ground.
+3. `mnemonic`: a text value uniquely representing the command. The component instance name is prepended to the mnemonic to ensure uniqueness in the system.
 
-4. synchronization "kind": (sync, async, guarded) controls which execution context the command runs in. Sync and guarded commands run on the execution context of the command dispatcher. Async commands execute on the component threads and can specify a priority. Guarded commands are protected from reentrancy by a mutex. These are similar to [port kinds TBD]()  Code in the component-specific generated base class calls a function to invoke the user-defined command handler. This is hooked up by connecting the command registration, command dispatch, and command response ports. 
+4. `arguments`: a set of primitive and F' data types supplied to the command handler to adjust its execution. These arguments are sent from the ground.
+
+5. `opcode`: a numerical value uniquely representing the command. This opcode is automatically adjusted to be relative to a component's base id, and thus will not collide with other commands defined by other components.
+
+== Kinds of Command 
+
+As specified above a command can be one of the following kinds: async, sync, or guarded which defines the execution context the command. Let's open up the idea in more details.
+
+When an async command is sent by the user the command arrives on a message queue, to be dispatched on the destination component's thread (if this component is active) or on the thread of a port invocation (if this component is queued).
+
+----
+async:
+[Command Dispatcher] ---Command---> [Message Queue] --Dispatch--> [Component's Thread or Port's Thread]
+|                  |                |             |               |                                   |
+ --- (A) ---                         --- (B) ---                    --- (C) ---
+
+- (A) represents the entity that is sending the command asynchronously.
+- (B) represents the message queue where commands are stored until they can be processed.
+- (C) represents the thread of the active component or port that will handle the command.
+----
+
+When a sync command is sent by the user the command invokes a handler defined in the destination component, and run on the thread of the caller. That means that the command runs immediately on the thread of the invoking component (for example, a command dispatcher component). A synchronous command is a command that blocks the execution of other commands until it completes. Since the command runs immediately, its handler should be very short. For example, it could set a flag and then exit.
+
+----
+sync:
+[Command Dispatcher] ---Command---> [Component's Handler]
+|                  |                |                   |
+ --- (A) ---                         --- (B) ---
+
+- (A) represents the entity that is sending the command synchronously.
+- (B) represents the component's handler which runs the command.
+----
+
+When a guarded command is sent by the user the execution behavior is similar to sync command, but the handler is guarded by a mutual exclusion lock. A mutex (short for mutual exclusion) is a synchronization primitive that ensures only one thread or task can access a guarded resource at a time. It prevents multiple executions of the same guarded command from overlapping. When a guarded command is executed, it acquires the mutex associated with it, ensuring exclusive access to the guarded resource or section of code. If another execution of the same guarded command is attempted while the mutex is held, it will wait until the mutex is released before proceeding. This mechanism helps prevent conflicts and maintain data integrity.
+
+----
+guarded:
+[Command Dispatcher] --Command--> [Component's Guarded Handler] -Mutex lock-> [Execution]
+|                  |              |                           |               |           |
+ --- (A) ---                       --- (B) ---                                 --- (C) ---
+
+- (A) represents the entity that is sending the command.
+- (B) represents the handler in the component that is guarded by a mutex lock.
+- (C) represents the execution of the command which only happens when it can acquire the mutex lock.
+----
 
 == Where to define commands
 
@@ -36,7 +82,7 @@ The most basic form of a command comprises a kind (such as sync, async, guarded)
 
 [source,fpp]
 ----
-active component Example {
+active component MyComp {
 
   async command START
   
@@ -47,13 +93,16 @@ active component Example {
 }
 ----
 
-The example above specifies the behavior of the "Example" component using F Prime Prime syntax. Here's the breakdown of the commands:
+The example above specifies the behavior of the "MyComp" component using F Prime Prime syntax. Here's the breakdown of the commands:
 
-* `async command START`: This line declares an asynchronous command called "START". It represents an action that can be triggered independently of the component's current state. When the "START" command is executed, it initiates a non-blocking operation. When an asynchronous command is received, it is added to a message queue. The command is then dispatched for execution either on the current component's thread (if the component is active) or on the thread of a port invocation (if the component is queued). 
+* `async command START`: This line declares an asynchronous command called "START". When the "START" command is executed, it will be placed in a message queue and will be executed when the target component is ready to accept the command.
 
-* `guarded command TOGGLE`: This line declares a guarded command called "TOGGLE". Guarded commands are protected from reentrance by a mutex. A mutex (short for mutual exclusion) is a synchronization primitive that ensures only one thread or task can access a guarded resource at a time. It prevents multiple executions of the same guarded command from overlapping. When a guarded command is executed, it acquires the mutex associated with it, ensuring exclusive access to the guarded resource or section of code. If another execution of the same guarded command is attempted while the mutex is held, it will wait until the mutex is released before proceeding. This mechanism helps prevent conflicts and maintain data integrity.
+* `guarded command TOGGLE`: This line declares a guarded command called "TOGGLE". This command will only run if mutex is not held by any other commands.
 
-* `sync command STOP`: This line declares a synchronous command called "STOP". That means that the command runs immediately on the thread of the invoking component (for example, a command dispatcher component). A synchronous command is a command that blocks the execution of other commands until it completes. In this example when the "STOP" command is executed, it halts the execution of other commands until it finishes. Because the command runs immediately, its handler should be very short. For example, it could set a stop flag and then exit.
+* `sync command STOP`: This line declares a synchronous command called "STOP". In this example when the "STOP" command is executed, it halts the execution of other commands until it finishes.
+
+== Command Parameters
+
 
 == Command Dispatching
 
