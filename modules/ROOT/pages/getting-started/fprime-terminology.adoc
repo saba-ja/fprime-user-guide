@@ -29,7 +29,7 @@ NOTE: Projects should specifically exclude the core F' library from being includ
 
 Deployments are a single build of F' software. Each deployment results in one software executable that can be run along with other associated files. Each deployment has a topology that defines the system.
 
-In the example below `MyDeployment` is the project deployment name and contains various files and folders including the `Top` folder which contains the deployment topology files.
+In the example below `MyDeployment` is the project's deployment folder and contains various files and folders including the `Top` folder which contains the deployment topology files.
 ----
 .
 └── MyProject
@@ -119,8 +119,12 @@ telemetry GreetingCount: U32
 
 === FPP
 
-FPP is a domain-specific language (DSL) specifically designed for F Prime. It is used to define the behavior, communication, and configuration of components within an F Prime system. FPP provides a structured syntax for defining components, ports, events, commands, telemetry, and other system elements.
+F Prime Prime (FPP) is a domain-specific language (DSL) specifically designed for F Prime. It is used to define the behavior, communication, and configuration of components within an F Prime system. FPP provides a structured syntax for defining components, ports, events, commands, telemetry, and other system elements.
 
 FPP is designed to be readable, concise, and expressive, allowing engineers to define and configure system behavior using a high-level language. It provides abstractions and constructs to model the interactions between components and facilitates the development of complex embedded systems by providing a clear separation of concerns and well-defined interfaces between components.
 
 Overall, FPP is a key component of the F Prime software framework and plays a crucial role in defining the behavior and functionality of systems developed using F Prime.
+
+=== GDS
+
+The Ground Data System (GDS) is a collection of hardware, software, and network infrastructure that supports the operation, management, and processing of data from satellites or spacecraft. It serves as the interface between space-based assets and ground operators.

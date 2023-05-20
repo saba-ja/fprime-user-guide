@@ -1,0 +1,79 @@
+= Commands
+
+== Command overview
+
+Each **Component** defines a set of commands for operations. Unlike pipes, which are intended for component to component communication, commands are designed for user interaction with a component. Commands are defined through a series of properties. Users can send commands to the F' system and via `Svc::CmdDispatcher` these commands are dispatched to a handling component to invoke some behavior. The handling component handles a command by defining a command handler function to run when the command arrives.
+
+The properties defining commands are shown below:
+
+1. opcode: a numerical value uniquely representing the command. This opcode is automatically adjusted to be relative to a component's base id, and thus will not collide with other commands defined by other components.
+
+2. mnemonic: a text value uniquely representing the command. The component instance name is prepended to the mnemonic to ensure uniqueness in the system.
+
+3. arguments: a set of primitive and F' data types supplied to the command handler to adjust its execution. These arguments are sent from the ground.
+
+4. synchronization "kind": (sync, async, guarded) controls which execution context the command runs in. Sync and guarded commands run on the execution context of the command dispatcher. Async commands execute on the component threads and can specify a priority. Guarded commands are protected from reentrancy by a mutex. These are similar to [port kinds TBD]()  Code in the component-specific generated base class calls a function to invoke the user-defined command handler. This is hooked up by connecting the command registration, command dispatch, and command response ports. 
+
+== Where to define commands
+
+Commands are defined in the component's FPP file. In the example below the we have a project called led-blinker and it has component called Led. The commands of the component are defined in the Led.fpp file.
+
+----
+└── led-blinker
+    ├── CMakeLists.txt
+    ├── Components
+    │   ├── CMakeLists.txt
+    │   └── Led
+    │       ├── CMakeLists.txt
+    │       ├── Led.cpp
+    │       ├── Led.fpp
+    │       ├── Led.hpp
+----
+
+== Defining commands in FPP
+
+The most basic form of a command comprises a kind (such as sync, async, guarded), followed by the keyword command, and a mnemonic serving as the command's name.
+
+[source,fpp]
+----
+active component Example {
+
+  async command START
+  
+  guarded command TOGGLE
+
+  sync command STOP
+
+}
+----
+
+The example above specifies the behavior of the "Example" component using F Prime Prime syntax. Here's the breakdown of the commands:
+
+* `async command START`: This line declares an asynchronous command called "START". It represents an action that can be triggered independently of the component's current state. When the "START" command is executed, it initiates a non-blocking operation. When an asynchronous command is received, it is added to a message queue. The command is then dispatched for execution either on the current component's thread (if the component is active) or on the thread of a port invocation (if the component is queued). 
+
+* `guarded command TOGGLE`: This line declares a guarded command called "TOGGLE". Guarded commands are protected from reentrance by a mutex. A mutex (short for mutual exclusion) is a synchronization primitive that ensures only one thread or task can access a guarded resource at a time. It prevents multiple executions of the same guarded command from overlapping. When a guarded command is executed, it acquires the mutex associated with it, ensuring exclusive access to the guarded resource or section of code. If another execution of the same guarded command is attempted while the mutex is held, it will wait until the mutex is released before proceeding. This mechanism helps prevent conflicts and maintain data integrity.
+
+* `sync command STOP`: This line declares a synchronous command called "STOP". That means that the command runs immediately on the thread of the invoking component (for example, a command dispatcher component). A synchronous command is a command that blocks the execution of other commands until it completes. In this example when the "STOP" command is executed, it halts the execution of other commands until it finishes. Because the command runs immediately, its handler should be very short. For example, it could set a stop flag and then exit.
+
+== Command Dispatching
+
+When commands are defined for a component, the autocoder automatically adds ports for registering and receiving commands, and reporting an execution status when finished. Each component that handles commands should be hooked up to the command dispatcher connecting the registration, dispatch, and response ports in parallel.
+
+![Command Dispatcher](../media/data_model1.png)
+
+**Figure 4. Command dispatcher.** The command dispatcher receives the raw buffer containing the command and arguments.
+The command opcode is extracted, and a lookup table is used to find the handling component. The argument buffer is then
+passed to the component, and the command dispatcher waits without blocking for the component to return status..
+
+In many projects, commands need to be sequenced in order. In order to facilitate this, the framework provides
+`Svc::CmdSequencer`. The command sequencer reads a defined sequence of commands and sends each in turn to the command
+dispatcher to be dispatched and the command execution status is returned to the sequencer.  This is an alternate path to
+send command buffers to the command dispatcher than the external path from ground.
+
+== Command Sequencing
+
+![Command Sequencer](../media/data_model2.png)
+
+**Figure 5. Command sequence.** The command sequencer loads a sequence file from the file system, sends the command,
+ and waits for the response for each command in the sequence. A failed response terminates the sequence,
+while a successful response moves to the next command in the sequence.
