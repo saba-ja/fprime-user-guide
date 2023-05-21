@@ -1,0 +1,7 @@
+= Port
+
+== What is F Prime Port
+
+In the context of F Prime framework, a "port" refers to a communication interface that connects components within the flight software system. Ports serve as conduits for sending and receiving data, commands, events, or telemetry between different components. You can think of a port as the endpoint of a connection between two component instances.
+
+image::fprime_ports.drawio.png[F Prime Port Illustration]
