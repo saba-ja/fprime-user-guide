@@ -287,7 +287,7 @@ In the example above, each port instance needs to have a specific data type, whi
 
 To address this, F Prime has a feature called serialization. Serialization allows us to take the arguments supplied to a port and convert them into a data buffer. Serialization ports are special ports designed to handle serialized buffers without automatically unpacking them. Any output port type can be connected to a serialization port input type, and any serialization output port can be connected to any input port type. This allows strongly-typed ports to connect to generic "pass-any-data" serialization ports, as depicted in Figure below.
 
-image::core3.png[Serialization ports]
+image::core3.png[Serialization ports, width=640,height=480]
 
 The framework supports serialized ports, which enable users to send both basic and custom data types. Serialization takes a set of typed values or function arguments and converts them into a data buffer in a way that is independent of the underlying system architecture.
 
