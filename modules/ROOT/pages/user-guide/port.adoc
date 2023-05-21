@@ -297,7 +297,32 @@ For input ports, when a connection is detected, the calling port serializes the 
 
 In summary serialization ports enable the transfer of serialized data between generic components that do not have knowledge of the specific data type contained in the buffer. This is useful for scenarios where data needs to be passed across different components without them needing to know the exact type of data being transmitted. Serialization ports are particularly useful for generic storage and communication components that don't require knowledge of the specific data types they handle. This allows the design and implementation of command and data handling (C&DH) components that can be reused. Tested C&DH components are typically developed to implement common flight functions that are not mission-specific.
 
+== Defining Serial Port Instances in FPP
 
+When writing a port instance, instead of specifying a named port type, you may write the keyword serial. Doing this specifies a serial port instance. A serial port instance does not specify the type of data that it carries. It may be connected to a port of any type. Serial data passes through the port; the data may be converted to or from a specific type at the other end of the connection.
+
+As an example, here is a passive component for taking a stream of serial data and splitting it (i.e., repeating it by copy) onto several streams:
+
+[source,fpp]
+----
+@ Split factor
+constant splitFactor = 10
+
+@ Component for splitting a serial data stream
+passive component SerialSplitter {
+
+  @ Input
+  sync input port serialIn: serial
+
+  @ Output
+  output port serialOut: [splitFactor] serial
+
+}
+----
+
+By using serial ports, you can send several unrelated types of data over the same port connection. This technique is useful when communicating across a network: on each side of the network connection, a single component can act as a hub that routs all data to and from components on that side. This flexibility comes at the cost that you lose the type compile-time type checking provided by port connections with named types. 
+
+== Special Port Instances
 
 == Defining Port
 
