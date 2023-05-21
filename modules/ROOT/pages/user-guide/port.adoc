@@ -6,7 +6,7 @@ In the context of F Prime framework, a "port" refers to a communication interfac
 
 image::fprime_ports.drawio.png[F Prime Port Illustration]
 
-== Distinguishing Port Design vs Port Instantiation
+== Port Design vs Port Instantiation
 
 When talking about ports, it's important to differentiate between the "port design" and "port instantiation". The design of a port specifies its type (name, arguments, etc.). The "port design" doesn't determine how the port is used by a component, such as its directionality, synchronous or asynchronous nature, or whether it's guarded or not. These usage details are specified during the instantiation of a port when it is used by a component.
 
@@ -102,7 +102,7 @@ passive component F32Adder {
 }
 ----
 
-== Priority
+== Port Instance Priority
 
 For `async input` ports, you may specify a priority.
 The priority specification is not allowed for other kinds of ports.
@@ -135,7 +135,7 @@ The precise meaning of the default priority and of the numeric priorities is
 implementation-specific.
 
 
-== Queue Full Behavior
+== Port Instance async input Queue Full Behavior
 
 By default, if an invocation of an `async input` port causes
 a message queue to overflow, then a *FSW assertion* fails.
@@ -280,6 +280,23 @@ In summary the following rules must be followed when instantiating ports:
 * An `active` or `queued` component must have at least one asynchronous input.
 * A port type appearing in an `async input` port may not have a return type.
 * Only `async input` ports can have priority.
+
+== Serial Port Instances
+
+In the example above, each port instance needs to have a specific data type, which defines what kind of data can be sent through that port. Ports can only connect to other ports that have the same data type. However, there may be cases where we don't want to enforce these port types and instead want to pass data between components as a general block of data.
+
+To address this, F Prime has a feature called serialization. Serialization allows us to take the arguments supplied to a port and convert them into a data buffer. Serialization ports are special ports designed to handle serialized buffers without automatically unpacking them. Any output port type can be connected to a serialization port input type, and any serialization output port can be connected to any input port type. This allows strongly-typed ports to connect to generic "pass-any-data" serialization ports, as depicted in Figure below.
+
+image::core3.png[Serialization ports]
+
+The framework supports serialized ports, which enable users to send both basic and custom data types. Serialization takes a set of typed values or function arguments and converts them into a data buffer in a way that is independent of the underlying system architecture.
+
+When a port call is serialized, its commands and arguments are converted into a serialized format and placed in message queues in the receiving component. Users can define various types of interface arguments, and the framework automatically handles the serialization of data for port calls. Complex types can be defined using XML, and a code generator can generate serializable classes for internal use and integration with the F' supplied ground system.
+
+For input ports, when a connection is detected, the calling port serializes the arguments before sending them. For output ports, the serialized port calls an interface on the typed port that deserializes the arguments. However, serialization ports do not support ports with return types.
+
+In summary serialization ports enable the transfer of serialized data between generic components that do not have knowledge of the specific data type contained in the buffer. This is useful for scenarios where data needs to be passed across different components without them needing to know the exact type of data being transmitted. Serialization ports are particularly useful for generic storage and communication components that don't require knowledge of the specific data types they handle. This allows the design and implementation of command and data handling (C&DH) components that can be reused. Tested C&DH components are typically developed to implement common flight functions that are not mission-specific.
+
 
 
 == Defining Port
