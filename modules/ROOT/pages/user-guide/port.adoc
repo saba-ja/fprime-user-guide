@@ -14,7 +14,7 @@ Like in object-oriented programming, a "port instance" is created using a "port 
 
 [source,fpp]
 ----
-<async input, sync input, guarded input, output> port <PortInstanceName>: <PortType>
+<async input, sync input, guarded input, output> port <PortInstanceName>: [[ArraySize]] <PortType> [priority NUMBER] [assert, block, drop]
 ----
 
 Here is an example of port instantiation:
@@ -90,7 +90,7 @@ As an example, if we modify the input ports of our `F32Adder`
 to make them `async`, we get an error.
 
 [source,fpp]
---------
+----
 port F32Value(value: F32)
 
 # Error: Passive component may not have async input
@@ -103,7 +103,7 @@ passive component ErroneousF32Adder {
   output port f32ValueOut: F32Value
 
 }
---------
+----
 
 Try presenting this code to `fpp-check` and observe what happens.
 
@@ -116,7 +116,7 @@ to make them `sync`, we get an error, because
 there is no async input.
 
 [source,fpp]
---------
+----
 port F32Value(value: F32)
 
 # Error: Active component must have async input
@@ -129,7 +129,7 @@ active component ErroneousActiveF32Adder {
   output port f32ValueOut: F32Value
 
 }
---------
+----
 
 Third, a port type appearing in an `async` `input` port
 may not have a return type.
@@ -138,7 +138,7 @@ makes sense only for synchronous input.
 As an example, this component definition is illegal:
 
 [source,fpp]
---------
+----
 port P -> U32
 
 active component Error {
@@ -148,7 +148,33 @@ active component Error {
   async input port p: P
 
 }
---------
+----
+
+In summary the following rules must be followed when instantiating ports:
+
+* No `passive` component may have an `async input` port.
+* An `active` or `queued` component must have at least one asynchronous input.
+* A port type appearing in an `async input` port may not have a return type.
+
+== Arrays of Port Instances
+
+When you use a port instance as part of an FPP component, you're actually using an array of port instances. Each instance in the array has a port number, starting at zero and incrementing by one for each subsequent element. In other words, the port numbers correspond to the array indices, which begin at zero.
+
+If you don't specify a size for the array, as shown in the previous examples, it defaults to size one, meaning there is a single port instance with port number zero. In essence, a port instance specifier without an array size behaves like a single element array. However, you can also specify an explicit array size by enclosing a size expression in square brackets \[ ... \], indicating the number of elements in the array. The size expression must be a numerical value. Similar to array type definitions, the size comes before the element type. As an example, here's another version of the F32Adder component that uses a single array with two input ports instead of two named ports.
+
+[source,fpp]
+----
+port F32Value(value: F32)
+
+passive component F32Adder {
+
+  sync input port f32ValueIn: [2] F32Value
+
+  output port f32ValueOut: F32Value
+}
+----
+
+
 
 == Defining Port
 
