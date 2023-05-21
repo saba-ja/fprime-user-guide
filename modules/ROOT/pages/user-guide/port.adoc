@@ -5,3 +5,91 @@
 In the context of F Prime framework, a "port" refers to a communication interface that connects components within the flight software system. Ports serve as conduits for sending and receiving data, commands, events, or telemetry between different components. You can think of a port as the endpoint of a connection between two component instances.
 
 image::fprime_ports.drawio.png[F Prime Port Illustration]
+
+== Instantiating F Prime Ports
+
+To use an F Prime port, the user needs to instantiate the port in the component's FPP specification. The port can be an instance of one of the F Prime predefined ports or one of the custom ports defined by the user. The process of defining custom ports will be covered later in this document.
+
+ust like in object-oriented programming, a "port instance" is created using a "port definition". The "port definition" holds information that applies to all instances of the port, like the type of data that can pass through it. On the other hand, the "port instance" contains specific details that are unique to its usage, such as the kind of port instance (async input, sync input, guarded input, output), the "port instance" name, and the type of instance which refers to the "port definition".
+
+[source,fpp]
+----
+<async input, sync input, guarded input, output> port <PortInstanceName>: <PortType>
+----
+
+Here is an example of port instantiation:
+
+[source,fpp]
+----
+active component Led {
+
+    sync input port run: Svc.Sched
+
+    output port gpioSet: Drv.GpioWrite
+}
+----
+
+Let's break down the code:
+
+`active component Led` line declares the start of a new component named "Led."
+
+`sync input port run: Svc.Sched` line declares a synchronous input port named "run," which is associated with the "Svc.Sched" interface. The "Svc.Sched" interface represents a scheduler service will be repeating based on a given "rate group".
+
+`output port gpioSet: Drv.GpioWrite` line declares an output port named "gpioSet," which is associated with the "Drv.GpioWrite" interface. The "Drv.GpioWrite" interface provides functionality to control the GPIO (General Purpose Input/Output) pins of a hardware device, such as setting the output state of a pin.
+
+NOTE: Both the link:https://github.com/nasa/fprime/blob/master/Svc/Sched/Sched.fpp[Svc.Sched] and link:https://github.com/nasa/fprime/blob/master/Drv/GpioDriverPorts/GpioDriverPorts.fpp[Drv.GpioWrite] are predefined F Prime ports.
+
+
+NOTE: Previously mentioned, there is a technical difference between a port type (defined outside any component, indicating the type of a port instance) and a port instance (defined inside a component, representing an instance of a port type). However, for the sake of simplicity, we will occasionally refer to a port instance as just a "port" in this manual, as long as it doesn't cause any confusion.
+
+== Defining Port
+
+A port definition defines an F Prime port. A port definition specifies the name of the port, the type of the data carried on the port, and an optional return type.
+
+[source,fpp]
+----
+port <PortName>[(parameterName: ParameterType, ...)] [-> returnType]
+----
+
+== Port Name
+
+The simplest port definition consists of the keyword `port` followed by a name. For example:
+
+[source,fpp]
+----
+port MyPort
+----
+
+The provided code creates a port called MyPort that has no input or output data. Such a port can be useful for sending or receiving a trigger event.
+
+== Port Parameters
+
+In most cases, a port is used to transmit data. To specify the data, you can define port parameters by enclosing them in parentheses. The parameters in a port definition is similar to a function definition in a programming language. Each parameter has a name and a type, and you can include any number of parameters. Here's an example to illustrate this:
+
+[source,fpp]
+----
+port P1() # Zero parameters; equivalent to port P1
+port P2(a: U32) # One parameter
+port P3(a: I32, b: F32, c: string) # Three parameters
+----
+
+The type of a formal parameter may be any valid type, including an array type, a struct type, an enum type, or an abstract type. For example, here is some code that defines an enum type E and and abstract type T, and then uses those types in the formal parameters of a port:
+
+[source,fpp]
+----
+enum E { A, B }
+type T
+port P(e: E, t: T)
+----
+
+Parameters in a port definition are written as a sequence of elements, and they can be separated by commas. However, it is also acceptable to omit the comma and use a newline instead. This means that the definition mentioned earlier can be written in the following alternate format:
+
+[source,fpp]
+----
+enum E { A, B }
+type T
+port P(
+  e: E
+  t: T
+)
+----
