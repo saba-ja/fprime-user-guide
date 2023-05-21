@@ -12,4 +12,5 @@
 ** xref:tutorials/hello-world/create-project.adoc[]
 ** xref:tutorials/hello-world/create-component.adoc[]
 * User Guide
+** xref:user-guide/port.adoc[]
 ** xref:user-guide/command.adoc[]
