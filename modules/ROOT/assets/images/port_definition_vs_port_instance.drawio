@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-05-21T08:39:00.402Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/113.0" etag="gHS05J49m7HypaUVUNT0" version="21.3.2" type="device">
+<mxfile host="app.diagrams.net" modified="2023-05-21T08:54:08.335Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/113.0" etag="Z3anNyo4lpC5fXfOLN3K" version="21.3.2" type="device">
   <diagram name="Page-1" id="pOy2rwm9JMJg5g_eni09">
     <mxGraphModel dx="2865" dy="1129" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -9,125 +9,125 @@
         </mxCell>
         <mxCell id="KxiXKuk-Jm15kqrHIx6u-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;strokeWidth=4;" edge="1" parent="1" source="KxiXKuk-Jm15kqrHIx6u-3">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="340" y="540" as="targetPoint" />
+            <mxPoint x="257" y="535" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-3" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=20;arcSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="120" y="120" width="440" height="200" as="geometry" />
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-3" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=20;arcSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="142" y="115" width="231" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-5" value="Port Definition" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="140" y="90" width="110" height="30" as="geometry" />
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-5" value="Port Definition" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="161" y="85" width="110" height="30" as="geometry" />
         </mxCell>
         <mxCell id="KxiXKuk-Jm15kqrHIx6u-6" value="Port name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;" vertex="1" parent="1">
-          <mxGeometry x="135" y="130" width="120" height="30" as="geometry" />
+          <mxGeometry x="153.5" y="130" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="KxiXKuk-Jm15kqrHIx6u-7" value="Port parameters" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;" vertex="1" parent="1">
-          <mxGeometry x="135" y="160" width="125" height="30" as="geometry" />
+          <mxGeometry x="153.5" y="160" width="125" height="30" as="geometry" />
         </mxCell>
         <mxCell id="KxiXKuk-Jm15kqrHIx6u-8" value="Port return type" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;" vertex="1" parent="1">
-          <mxGeometry x="135" y="190" width="125" height="30" as="geometry" />
+          <mxGeometry x="153.5" y="190" width="125" height="30" as="geometry" />
         </mxCell>
         <mxCell id="KxiXKuk-Jm15kqrHIx6u-18" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="120" y="530" width="440" height="230" as="geometry" />
+          <mxGeometry x="120" y="530" width="220" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-15" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=20;arcSize=12;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-18">
-          <mxGeometry y="30" width="440" height="200" as="geometry" />
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-15" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=0;arcSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-18">
+          <mxGeometry y="20.869565217391305" width="220" height="139.1304347826087" as="geometry" />
         </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-9" value="Port Instances" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-18">
-          <mxGeometry x="20" width="110" height="30" as="geometry" />
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-9" value="" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-18">
+          <mxGeometry x="14" width="100" height="20.87" as="geometry" />
         </mxCell>
         <mxCell id="KxiXKuk-Jm15kqrHIx6u-10" value="Port direction (async input, sync input, guarded input, output)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-18">
-          <mxGeometry x="15" y="60" width="405" height="30" as="geometry" />
+          <mxGeometry x="7.5" y="41.73913043478261" width="202.5" height="20.869565217391305" as="geometry" />
         </mxCell>
         <mxCell id="KxiXKuk-Jm15kqrHIx6u-11" value="Port Instance name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-18">
-          <mxGeometry x="15" y="90" width="330" height="30" as="geometry" />
+          <mxGeometry x="7.5" y="68.6086956521739" width="165" height="20.869565217391305" as="geometry" />
         </mxCell>
         <mxCell id="KxiXKuk-Jm15kqrHIx6u-12" value="Port priority" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-18">
-          <mxGeometry x="15" y="150" width="320" height="30" as="geometry" />
+          <mxGeometry x="7.5" y="109.34782608695652" width="160" height="20.869565217391305" as="geometry" />
         </mxCell>
         <mxCell id="KxiXKuk-Jm15kqrHIx6u-13" value="Port Queue Full behavior" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-18">
-          <mxGeometry x="15" y="180" width="335" height="30" as="geometry" />
+          <mxGeometry x="7.5" y="132.2173913043478" width="167.5" height="20.869565217391305" as="geometry" />
         </mxCell>
         <mxCell id="KxiXKuk-Jm15kqrHIx6u-14" value="Port array size" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-18">
-          <mxGeometry x="15" y="120" width="330" height="30" as="geometry" />
+          <mxGeometry x="7.5" y="87.47826086956522" width="165" height="20.869565217391305" as="geometry" />
         </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-51" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="130" y="540" width="440" height="230" as="geometry" />
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-80" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="360" width="440" height="520" as="geometry" />
         </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-52" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=20;arcSize=12;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-51">
-          <mxGeometry y="30" width="440" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-53" value="Port Instances" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-51">
-          <mxGeometry x="20" width="110" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-54" value="Port direction (async input, sync input, guarded input, output)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-51">
-          <mxGeometry x="15" y="60" width="405" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-55" value="Port Instance name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-51">
-          <mxGeometry x="15" y="90" width="330" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-56" value="Port priority" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-51">
-          <mxGeometry x="15" y="150" width="320" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-57" value="Port Queue Full behavior" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-51">
-          <mxGeometry x="15" y="180" width="335" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-58" value="Port array size" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-51">
-          <mxGeometry x="15" y="120" width="330" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-59" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="140" y="550" width="440" height="230" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-60" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=20;arcSize=12;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-59">
-          <mxGeometry y="30" width="440" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-61" value="Port Instances" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-59">
-          <mxGeometry x="20" width="110" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-62" value="Port direction (async input, sync input, guarded input, output)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-59">
-          <mxGeometry x="15" y="60" width="405" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-63" value="Port Instance name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-59">
-          <mxGeometry x="15" y="90" width="330" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-64" value="Port priority" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-59">
-          <mxGeometry x="15" y="150" width="320" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-65" value="Port Queue Full behavior" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-59">
-          <mxGeometry x="15" y="180" width="335" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-66" value="Port array size" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-59">
-          <mxGeometry x="15" y="120" width="330" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-67" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="150" y="560" width="440" height="230" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-68" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=20;arcSize=12;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-67">
-          <mxGeometry y="30" width="440" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-69" value="Port Instances" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-67">
-          <mxGeometry x="20" width="110" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-70" value="Port direction (async input, sync input, guarded input, output)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-67">
-          <mxGeometry x="15" y="60" width="405" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-71" value="Port Instance name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-67">
-          <mxGeometry x="15" y="90" width="330" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-72" value="Port priority" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-67">
-          <mxGeometry x="15" y="150" width="320" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-73" value="Port Queue Full behavior" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-67">
-          <mxGeometry x="15" y="180" width="335" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-74" value="Port array size" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-67">
-          <mxGeometry x="15" y="120" width="330" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-80" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="-320" y="360" width="440" height="590" as="geometry" />
-        </mxCell>
-        <mxCell id="KxiXKuk-Jm15kqrHIx6u-81" value="Component A" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=29;" vertex="1" parent="1">
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-81" value="Component M" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=29;" vertex="1" parent="1">
           <mxGeometry x="-197.5" y="390" width="195" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-107" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="130" y="540" width="220" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-108" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=0;arcSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-107">
+          <mxGeometry y="20.869565217391305" width="220" height="139.1304347826087" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-109" value="" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-107">
+          <mxGeometry x="14" width="100" height="20.87" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-110" value="Port direction (async input, sync input, guarded input, output)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-107">
+          <mxGeometry x="7.5" y="41.73913043478261" width="202.5" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-111" value="Port Instance name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-107">
+          <mxGeometry x="7.5" y="68.6086956521739" width="165" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-112" value="Port priority" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-107">
+          <mxGeometry x="7.5" y="109.34782608695652" width="160" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-113" value="Port Queue Full behavior" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-107">
+          <mxGeometry x="7.5" y="132.2173913043478" width="167.5" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-114" value="Port array size" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-107">
+          <mxGeometry x="7.5" y="87.47826086956522" width="165" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-115" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="140" y="550" width="220" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-116" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=0;arcSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-115">
+          <mxGeometry y="20.869565217391305" width="220" height="139.1304347826087" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-117" value="" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-115">
+          <mxGeometry x="14" width="100" height="20.87" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-118" value="Port direction (async input, sync input, guarded input, output)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-115">
+          <mxGeometry x="7.5" y="41.73913043478261" width="202.5" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-119" value="Port Instance name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-115">
+          <mxGeometry x="7.5" y="68.6086956521739" width="165" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-120" value="Port priority" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-115">
+          <mxGeometry x="7.5" y="109.34782608695652" width="160" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-121" value="Port Queue Full behavior" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-115">
+          <mxGeometry x="7.5" y="132.2173913043478" width="167.5" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-122" value="Port array size" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-115">
+          <mxGeometry x="7.5" y="87.47826086956522" width="165" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-123" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="150" y="560" width="220" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-124" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=0;arcSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-123">
+          <mxGeometry y="20.869565217391305" width="220" height="139.1304347826087" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-125" value="Port Instance" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;strokeWidth=2;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-123">
+          <mxGeometry x="14" width="100" height="20.87" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-126" value="Port direction (async input, sync input, guarded input, output)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-123">
+          <mxGeometry x="7.5" y="41.73913043478261" width="202.5" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-127" value="Port Instance name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-123">
+          <mxGeometry x="7.5" y="68.6086956521739" width="165" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-128" value="Port priority" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-123">
+          <mxGeometry x="7.5" y="109.34782608695652" width="160" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-129" value="Port Queue Full behavior" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-123">
+          <mxGeometry x="7.5" y="132.2173913043478" width="167.5" height="20.869565217391305" as="geometry" />
+        </mxCell>
+        <mxCell id="KxiXKuk-Jm15kqrHIx6u-130" value="Port array size" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="KxiXKuk-Jm15kqrHIx6u-123">
+          <mxGeometry x="7.5" y="87.47826086956522" width="165" height="20.869565217391305" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
