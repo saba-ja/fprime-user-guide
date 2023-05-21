@@ -68,13 +68,87 @@ passive component F32Adder {
 
 The code above defines a component called "F32Adder" that performs addition on 32-bit floating-point values. Let's break down the code:
 
-* port F32Value(value: F32): This line defines a port type called F32Value, which represents a 32-bit floating-point value. The value parameter indicates that this port type expects a value of type F32.
-* passive component F32Adder: This line defines a passive component called F32Adder. A passive component is a reusable module that doesn't have its own thread of execution and relies on external events to trigger its behavior.
-* sync input port f32ValueIn1: F32Value: This line declares a synchronous input port called f32ValueIn1. Synchronous means that the component expects to receive data on this port and will wait for it to be available before proceeding. The port is of type F32Value, which means it can receive a 32-bit floating-point value.
-* sync input port f32ValueIn2: F32Value: Similar to the previous line, this declares another synchronous input port called f32ValueIn2 of type F32Value.
-* output port f32ValueOut: F32Value: This line declares an output port called f32ValueOut of type F32Value. This port will be used to send the result of the addition operation.
+* `port F32Value(value: F32)`: This line defines a port type called F32Value, which represents a 32-bit floating-point value. The value parameter indicates that this port type expects a value of type F32.
+* `passive component F32Adder`: This line defines a passive component called F32Adder. A passive component is a reusable module that doesn't have its own thread of execution and relies on external events to trigger its behavior.
+* `sync input port f32ValueIn1`: F32Value: This line declares a synchronous input port called f32ValueIn1. Synchronous means that the component expects to receive data on this port and will wait for it to be available before proceeding. The port is of type F32Value, which means it can receive a 32-bit floating-point value.
+* `sync input port f32ValueIn2`: F32Value: Similar to the previous line, this declares another synchronous input port called f32ValueIn2 of type F32Value.
+* `output port f32ValueOut`: F32Value: This line declares an output port called f32ValueOut of type F32Value. This port will be used to send the result of the addition operation.
 
 NOTE: The example code above doesn't explicitly show the implementation details of the addition operation, but it defines the input and output ports of the component.
+
+== Rules for Port Instances
+
+The port instances appearing in a component definition must
+satisfy certain rules.
+These rules ensure that the FPP model makes sense.
+
+First, no passive component may have an `async` `input`
+port.
+This is because a passive component has no message queue,
+so asynchronous input is not possible.
+As an example, if we modify the input ports of our `F32Adder`
+to make them `async`, we get an error.
+
+[source,fpp]
+--------
+port F32Value(value: F32)
+
+# Error: Passive component may not have async input
+passive component ErroneousF32Adder {
+
+  async input port f32ValueIn1: F32Value
+
+  async input port f32ValueIn2: F32Value
+
+  output port f32ValueOut: F32Value
+
+}
+--------
+
+Try presenting this code to `fpp-check` and observe what happens.
+
+Second, an active or queued component _must_ have asynchronous input.
+That means it must have at least one async input port;
+or it must have an internal port (described below);
+or it must have at least one async command (also described below).
+As an example, if we modify the input ports of our `ActiveF32Adder`
+to make them `sync`, we get an error, because
+there is no async input.
+
+[source,fpp]
+--------
+port F32Value(value: F32)
+
+# Error: Active component must have async input
+active component ErroneousActiveF32Adder {
+
+  sync input port f32ValueIn1: F32Value
+
+  sync input port f32ValueIn2: F32Value
+
+  output port f32ValueOut: F32Value
+
+}
+--------
+
+Third, a port type appearing in an `async` `input` port
+may not have a return type.
+This is because returning a value
+makes sense only for synchronous input.
+As an example, this component definition is illegal:
+
+[source,fpp]
+--------
+port P -> U32
+
+active component Error {
+
+  # Error: port instance p: P is async input and
+  # port P has a return type
+  async input port p: P
+
+}
+--------
 
 == Defining Port
 
