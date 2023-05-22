@@ -1,10 +1,11 @@
 name: fprime-user-guide
 title: F Prime User Guide
-version: 1.0.0
+version: latest
 start_page: intro.adoc
 asciidoc:
   attributes:
-    source-language: asciidoc@
+    url-highlightjs: https://highlightjs.org
+    source-language: cpp@
     table-caption: false
 nav:
 - modules/ROOT/nav.adoc
