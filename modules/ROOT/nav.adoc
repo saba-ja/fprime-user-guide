@@ -15,3 +15,4 @@
 ** xref:user-guide/component.adoc[]
 ** xref:user-guide/port.adoc[]
 ** xref:user-guide/command.adoc[]
+** xref:user-guide/event.adoc[]
