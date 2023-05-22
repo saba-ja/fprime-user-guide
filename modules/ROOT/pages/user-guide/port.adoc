@@ -1157,22 +1157,3 @@ If this happens, then you should make sure that `A` cannot use
 For example, you could use state variables of enum type in `A` and in `B` to
 track ownership, and you could have a port invocation from `A` to `B` pass the
 reference and transfer ownership from `A` to `B` and vice versa.
-
-== Annotating a Port Definition
-
-A port definition is an
-<<Writing-Comments-and-Annotations_Annotations,annotatable element>>.
-Each formal parameter is also an annotatable element.
-Here is an example:
-
-[source,fpp]
-----
-@ Pre annotation for port P
-port P(
-  @ Pre annotation for parameter a
-  a: U32
-  @ Pre annotation for parameter b
-  b: F32
-)
-----
-

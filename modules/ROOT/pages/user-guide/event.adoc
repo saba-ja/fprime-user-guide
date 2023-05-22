@@ -1,0 +1,60 @@
+= Event
+
+== What is an F Prime Event
+
+Events represent a log of activities taken by the embedded system. Events can be thought of in the same way as a program execution log in that they enable the ability to trace the execution of the system. Events are sent out of the system via the Svc::ActiveLogger component and components defining commands should hook up the log port to it. If console logging is desired, the text log port can be hooked up to the Svc::PassiveConsoleTextLogger component. Events are defined per component and are typically used to capture what the component is doing. Events can be sporadic; however, should all be captured for downlink.
+
+When defining an F Prime component, you may specify one or more events. The F Prime framework converts each event into a C++ function that you can call from the component implementation. Calling the function emits a serialized event report that you can store in an on-board file system or send to the ground.
+
+== Event properties
+
+Events are defined by the following properties:
+
+
+    id: a numeric id uniquely define this event. It is automatically offset by the component's base id to ensure global uniqueness.
+    name: a unique text identifier for this event. This is prepended by the component instance name to remain unique.
+    severity: a text identifier identifying the severity of this event. Possible values are:
+        DIAGNOSTIC: akin to debug messages. Usually not sent to the ground.
+        ACTIVITY_LO: akin to fine info messages these typically come from background tasks
+        ACTIVITY_HI: akin to info messages these typically come from foreground tasks
+        WARNING_LO: less severe warning events
+        WARNING_HI: high-severity warning events, although the system can still function
+        FATAL: fatal events indicating that the system must reboot
+        COMMAND: events tracing the execution of commands
+    arguments: like command arguments, these are primitive and complex types that represent the variable data associated with the event. These are injected into the format string for a full text representation of the event.
+    format string: a C-style format string used to reconstruct a text version of the event.
+
+Note: the use of events to severity levels are based on the judgement of the system designer.
+
+Code in the component-specific generated base class provides a function to call to emit each event defined by the component. This function expects an argument to be supplied for each argument defined by the event. The code generator automatically adds ports for retrieving a time tag and sending events. There are two independent ports for sending events:
+
+    binary log output port for sending outside the system
+    a text log output port for on-board consoles
+
+== Event Logging
+
+Events first acquire a time tag to represent when they occurred and then are typically sent to the Svc::ActiveLogger component on their way to be sent down to the ground. This logger component both processes the event and also recognizes and begins responses for FATAL severity events.
+
+image::data_model3.png[Event log]
+
+Figure 6. Event log. The component implementation calls a function to generate the event. The base class retrieves the time tag from the time source component. The component sends the event to the event log component, which reads it from the port queue and sends it to the ground.
+
+== Event Severity
+
+The simplest event consists of the keyword event, a name, a severity, and a format string. The name is the name of the event. A severity is the keyword severity and one of the following:
+
+diagnostic: An event relating to system diagnosis and debugging.
+activity low: Spacecraft activity of lesser importance.
+activity high: Spacecraft activity of greater importance.
+warning low: A warning of lesser importance.
+warning high: A warning of greater importance.
+fatal: An event that causes the system to abort.
+command: An event related to commanding. Primarily used by the command dispatcher.
+
+
+
+
+
+A format is the keyword format and a literal string for use in a formatted real-time display or event log.
+
+As an example, here is an active component called BasicEvents with a few basic events.
