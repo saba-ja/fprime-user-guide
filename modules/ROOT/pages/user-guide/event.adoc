@@ -11,25 +11,25 @@ When defining an F Prime component, you may specify one or more events. The F Pr
 Events are defined by the following properties:
 
 
-    id: a numeric id uniquely define this event. It is automatically offset by the component's base id to ensure global uniqueness.
-    name: a unique text identifier for this event. This is prepended by the component instance name to remain unique.
-    severity: a text identifier identifying the severity of this event. Possible values are:
-        DIAGNOSTIC: akin to debug messages. Usually not sent to the ground.
-        ACTIVITY_LO: akin to fine info messages these typically come from background tasks
-        ACTIVITY_HI: akin to info messages these typically come from foreground tasks
-        WARNING_LO: less severe warning events
-        WARNING_HI: high-severity warning events, although the system can still function
-        FATAL: fatal events indicating that the system must reboot
-        COMMAND: events tracing the execution of commands
-    arguments: like command arguments, these are primitive and complex types that represent the variable data associated with the event. These are injected into the format string for a full text representation of the event.
-    format string: a C-style format string used to reconstruct a text version of the event.
+* id: a numeric id uniquely define this event. It is automatically offset by the component's base id to ensure global uniqueness.
+* name: a unique text identifier for this event. This is prepended by the component instance name to remain unique.
+* severity: a text identifier identifying the severity of this event. Possible values are:
+** DIAGNOSTIC: akin to debug messages. Usually not sent to the ground.
+** ACTIVITY_LO: akin to fine info messages these typically come from background tasks
+** ACTIVITY_HI: akin to info messages these typically come from foreground tasks
+** WARNING_LO: less severe warning events
+** WARNING_HI: high-severity warning events, although the system can still function
+** FATAL: fatal events indicating that the system must reboot
+** COMMAND: events tracing the execution of commands
+* arguments: like command arguments, these are primitive and complex types that represent the variable data associated with the event. These are injected into the format string for a full text representation of the event.
+* format string: a C-style format string used to reconstruct a text version of the event.
 
-Note: the use of events to severity levels are based on the judgement of the system designer.
+NOTE: The use of events to severity levels are based on the judgement of the system designer.
 
 Code in the component-specific generated base class provides a function to call to emit each event defined by the component. This function expects an argument to be supplied for each argument defined by the event. The code generator automatically adds ports for retrieving a time tag and sending events. There are two independent ports for sending events:
 
-    binary log output port for sending outside the system
-    a text log output port for on-board consoles
+* Binary log output port for sending outside the system
+* A text log output port for on-board consoles
 
 == Event Logging
 
