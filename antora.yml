@@ -4,8 +4,7 @@ version: latest
 start_page: intro.adoc
 asciidoc:
   attributes:
-    url-highlightjs: https://highlightjs.org
-    source-language: cpp@
+    source-language: asciidoc@
     table-caption: false
 nav:
 - modules/ROOT/nav.adoc
